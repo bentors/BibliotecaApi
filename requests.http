@@ -1,0 +1,58 @@
+@host = http://localhost:5000
+
+### Criar autor
+POST {{host}}/api/v1/autores
+Content-Type: application/json
+
+{ "nome": "Machado de Assis", "nacionalidade": "Brasileira" }
+
+### Listar autores
+GET {{host}}/api/v1/autores
+
+### Buscar autor por id
+GET {{host}}/api/v1/autores/1
+
+### Atualizar autor
+PUT {{host}}/api/v1/autores/1
+Content-Type: application/json
+
+{ "nome": "Joaquim Maria Machado de Assis", "nacionalidade": "Brasileira" }
+
+### Criar livro
+POST {{host}}/api/v1/livros
+Content-Type: application/json
+
+{ "titulo": "Dom Casmurro", "isbn": "9788535911664", "anoPublicacao": 1899, "autorId": 1 }
+
+### Listar livros (filtros opcionais)
+GET {{host}}/api/v1/livros?autorId=1&titulo=Dom
+
+### Buscar livro por id
+GET {{host}}/api/v1/livros/1
+
+### Livros de um autor
+GET {{host}}/api/v1/autores/1/livros
+
+### Atualizar livro
+PUT {{host}}/api/v1/livros/1
+Content-Type: application/json
+
+{ "titulo": "Dom Casmurro", "isbn": "9788535911664", "anoPublicacao": 1900, "autorId": 1 }
+
+### 400 - validação (corpo inválido)
+POST {{host}}/api/v1/livros
+Content-Type: application/json
+
+{ "titulo": "", "isbn": "123", "anoPublicacao": 5, "autorId": 0 }
+
+### 404 - livro inexistente
+GET {{host}}/api/v1/livros/999
+
+### 409 - excluir autor com livros
+DELETE {{host}}/api/v1/autores/1
+
+### Excluir livro (204)
+DELETE {{host}}/api/v1/livros/1
+
+### Excluir autor (204)
+DELETE {{host}}/api/v1/autores/1
