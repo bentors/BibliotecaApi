@@ -71,7 +71,7 @@ public class AutoresController(AppDbContext db) : ControllerBase
 
         return CreatedAtAction(
             nameof(ObterPorId),
-            new { id = autor.Id, version = "1.0" },
+            new { id = autor.Id, version = "1" },
             AutorResponse.From(autor));
     }
 

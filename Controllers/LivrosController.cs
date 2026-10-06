@@ -78,7 +78,7 @@ public class LivrosController(AppDbContext db) : ControllerBase
 
         return CreatedAtAction(
             nameof(ObterPorId),
-            new { id = livro.Id, version = "1.0" },
+            new { id = livro.Id, version = "1" },
             LivroResponse.From(livro));
     }
 
