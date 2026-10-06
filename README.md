@@ -8,9 +8,11 @@ API RESTful em **C# .NET 10** com **Entity Framework Core** para gerenciamento d
 
 | Nome | RM |
 |------|----|
-| _Nome 1_ | _RM_ |
-| _Nome 2_ | _RM_ |
-| _Nome 3_ | _RM_ |
+| Ricardo Di Tilia | RM555155 |
+| Bento Rangel | RM559124 |
+| Eric Yuji | RM554869 |
+| Kaue Pires | RM554403 |
+| Higor Batista | RM558907 |
 
 ## Contexto do projeto
 
@@ -34,7 +36,7 @@ API RESTful em **C# .NET 10** com **Entity Framework Core** para gerenciamento d
 
 ```bash
 # 1. Clonar o repositório
-git clone <URL-DO-REPOSITORIO>
+git clone https://github.com/bentors/BibliotecaApi.git
 cd BibliotecaApi
 
 # 2. Restaurar dependências
