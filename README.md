@@ -1,10 +1,10 @@
-# 📚 Biblioteca API
+# Biblioteca API
 
 API RESTful em **C# .NET 10** com **Entity Framework Core** para gerenciamento de autores e livros de uma biblioteca.
 
-> Projeto da disciplina **C# Software Development** — CP5 (API RESTful com EF Core .NET 10).
+> Projeto da disciplina **C# Software Development**, CP5 (API RESTful com EF Core .NET 10).
 
-## 👥 Integrantes
+## Integrantes
 
 | Nome | RM |
 |------|----|
@@ -12,7 +12,7 @@ API RESTful em **C# .NET 10** com **Entity Framework Core** para gerenciamento d
 | _Nome 2_ | _RM_ |
 | _Nome 3_ | _RM_ |
 
-## 🎯 Contexto do projeto
+## Contexto do projeto
 
 **O que é:** uma API para cadastro e consulta de autores e dos livros que escreveram.
 
@@ -20,15 +20,15 @@ API RESTful em **C# .NET 10** com **Entity Framework Core** para gerenciamento d
 
 **Para quem é:** bibliotecários e desenvolvedores que precisam de um back-end simples e confiável para gerir o acervo.
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 - C# / .NET 10 (ASP.NET Core Web API com Controllers)
 - Entity Framework Core 10 (Code First + Migrations)
 - **Banco de dados: SQLite** (arquivo `biblioteca.db`, criado automaticamente)
-- Asp.Versioning (versionamento por URL — `/api/v1/...`)
+- Asp.Versioning (versionamento por URL: `/api/v1/...`)
 - OpenAPI + Scalar (documentação interativa)
 
-## ▶️ Como rodar localmente
+## Como rodar localmente
 
 **Pré-requisito:** [.NET 10 SDK](https://dotnet.microsoft.com/download) instalado.
 
@@ -48,19 +48,19 @@ A API sobe em **http://localhost:5000** e a documentação interativa (para test
 
 Também é possível testar com o arquivo [`requests.http`](requests.http) (VS Code com a extensão REST Client, ou Visual Studio / Rider).
 
-## 🗄️ Migrations
+## Migrations
 
 A migration inicial fica na pasta `Migrations/`. Para recriar ou adicionar novas:
 
 ```bash
 dotnet tool install --global dotnet-ef      # apenas na primeira vez
-dotnet ef migrations add InitialCreate      # cria a migration
+dotnet ef migrations add <NomeDaMigration>  # cria uma nova migration
 dotnet ef database update                   # aplica no banco (também é aplicada ao iniciar a API)
 ```
 
 **Migration `InitialCreate`:** cria as tabelas `Autores` e `Livros`, a chave estrangeira `Livros.AutorId → Autores.Id` (sem exclusão em cascata) e o índice único em `Livros.Isbn`.
 
-## 🔗 Endpoints (versão 1)
+## Endpoints (versão 1)
 
 ### Autores
 
@@ -77,7 +77,7 @@ dotnet ef database update                   # aplica no banco (também é aplica
 
 | Método | Rota | Descrição | Status |
 |--------|------|-----------|--------|
-| GET | `/api/v1/livros` | Lista livros (filtros opcionais: `?autorId=` e `?titulo=`) | 200 |
+| GET | `/api/v1/livros` | Lista livros (filtros opcionais: `?autorId=` e `?titulo=`, busca parcial sem diferenciar maiúsculas) | 200 |
 | GET | `/api/v1/livros/{id}` | Busca um livro pelo id | 200, 404 |
 | POST | `/api/v1/livros` | Cadastra um livro | 201, 400, 409 |
 | PUT | `/api/v1/livros/{id}` | Atualiza um livro | 200, 400, 404, 409 |
@@ -97,16 +97,13 @@ dotnet ef database update                   # aplica no banco (também é aplica
 
 ### Tratamento de erros
 
-Os erros seguem o padrão `ProblemDetails` (RFC 7807): `400` para validação, `404` para recurso inexistente, `409` para conflito (ISBN duplicado ou autor com livros) e `500` para exceções não tratadas.
+Os erros seguem o padrão `ProblemDetails` (RFC 9457): `400` para validação, `404` para recurso inexistente, `409` para conflito (ISBN duplicado ou autor com livros) e `500` para exceções não tratadas.
 
-## 🧪 Evidências de teste
+## Evidências de teste
 
 Os prints dos testes de cada endpoint estão em [`docs/evidencias/`](docs/evidencias/).
 
-<!-- Adicione aqui os prints, por exemplo: -->
-<!-- ![POST autores](docs/evidencias/01-post-autores.png) -->
-
-## 📁 Estrutura do projeto
+## Estrutura do projeto
 
 ```
 BibliotecaApi/

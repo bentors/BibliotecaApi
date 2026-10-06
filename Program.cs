@@ -37,8 +37,8 @@ using (var scope = app.Services.CreateScope())
 app.UseExceptionHandler();
 app.UseStatusCodePages();
 
-app.MapOpenApi();                 // /openapi/v1.json
-app.MapScalarApiReference();      // /scalar/v1  (interface para testar os endpoints)
+app.MapOpenApi();             // /openapi/v1.json
+app.MapScalarApiReference(); // /scalar/v1
 
 app.MapGet("/", () => Results.Redirect("/scalar/v1")).ExcludeFromDescription();
 
