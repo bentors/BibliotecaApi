@@ -6,11 +6,11 @@ namespace BibliotecaApi.Dtos;
 public class LivroRequest
 {
     [Required(ErrorMessage = "O título é obrigatório.")]
-    [StringLength(200, MinimumLength = 1)]
+    [StringLength(200, MinimumLength = 1, ErrorMessage = "O título deve ter entre {2} e {1} caracteres.")]
     public string Titulo { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "O ISBN é obrigatório.")]
-    [StringLength(20, MinimumLength = 10)]
+    [StringLength(20, MinimumLength = 10, ErrorMessage = "O ISBN deve ter entre {2} e {1} caracteres.")]
     public string Isbn { get; set; } = string.Empty;
 
     [Range(1000, 2100, ErrorMessage = "Ano de publicação inválido.")]
