@@ -26,7 +26,7 @@ public class LivrosController(AppDbContext db) : ControllerBase
             query = query.Where(l => l.AutorId == autorId.Value);
 
         if (!string.IsNullOrWhiteSpace(titulo))
-            query = query.Where(l => l.Titulo.Contains(titulo));
+            query = query.Where(l => EF.Functions.Like(l.Titulo, $"%{titulo}%"));
 
         var livros = await query.OrderBy(l => l.Titulo).ToListAsync();
         return Ok(livros.Select(LivroResponse.From));
